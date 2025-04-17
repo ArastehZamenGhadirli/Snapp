@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'django_filters'
+
 ]
 
 MIDDLEWARE = [
@@ -68,7 +72,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "Snapp.wsgi.application"
+REST_FRAMEWORK = {
 
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -121,3 +131,4 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
