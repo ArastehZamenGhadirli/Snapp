@@ -6,11 +6,16 @@ from django.contrib.auth.models import User
 class UserDirection(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.CharField(max_length=100)
-    origin_x = models.FloatField()
-    origin_y = models.FloatField()
-    destination_x = models.FloatField()
-    destination_y = models.FloatField()
+    origin_x = models.CharField(max_length=50)
+    origin_y = models.CharField(max_length=50)
+    destination_x = models.CharField(max_length=50)
+    destination_y = models.CharField(max_length=50)
     bearing = models.FloatField()
     payment = models.IntegerField()
-    initial_amount = models.IntegerField(default=1000000)
+    initial_amount = models.FloatField(default=1000000)
+    
+
+
+
+
 
