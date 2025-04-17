@@ -16,6 +16,8 @@ class UserDirection(models.Model):
     
 
 
+class UserWallet(User):
+    wallet = models.PositiveIntegerField(default = 10_000_000)
 
 
 

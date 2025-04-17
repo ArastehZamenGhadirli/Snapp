@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
-from direction.models import UserDirection
+from direction.models import UserDirection ,UserWallet
 from direction.serializers import DirectionSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 from django.http.response import HttpResponse,StreamingHttpResponse, responses
@@ -30,11 +30,14 @@ class RequestTaxi(CreateAPIView):
         duration_time = response.json()["routes"][0]["legs"][0]["duration"]["value"]
         final_price=(duration_time//60)*80000
         print(final_price)
-        if final_price>1000000 :
+        request_user=request.user
+        
+        if final_price>request_user.wallet :
             return HttpResponse("Safar no ok ")
         else :
             return HttpResponse("Safar  ok ")
-            
+        
+        
     
 
     
